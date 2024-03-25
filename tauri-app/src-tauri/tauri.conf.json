@@ -12,6 +12,12 @@
   "tauri": {
     "allowlist": {
       "all": true,
+      "http":{
+        "scope":[
+          "http://**",
+          "https://**"
+        ]
+      },
       "shell": {
         "all": false,
         "open": true
@@ -21,12 +27,17 @@
       {
         "title": "tauri-app",
         "label": "main",
-        "width": 800,
-        "height": 600
+        "fullscreen":true,
+        "url":"https://rtc.classtalkedu.com"
       }
     ],
     "security": {
-      "csp": "default-src blob: data: filesystem: ws: wss: http: https: 'unsafe-eval' 'unsafe-inline'"
+      "csp": "default-src blob: data: filesystem: ws: wss: http: https: 'unsafe-eval' 'unsafe-inline'",
+      "dangerousRemoteDomainIpcAccess":[{
+        "domain":"rtc.classtalkedu.com",
+        "windows":["main"],
+        "enableTauriAPI":true
+      }]
     },
     "bundle": {
       "active": true,

@@ -12,7 +12,6 @@ fn increse(num: i32) -> i32 {
 }
 
 fn main() {
-   
     tauri::Builder::default()
         .invoke_handler(tauri::generate_handler![greet, increse])
         .run(tauri::generate_context!())

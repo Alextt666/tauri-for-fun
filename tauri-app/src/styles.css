@@ -12,11 +12,12 @@
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   -webkit-text-size-adjust: 100%;
+  background-image: url('https://th.bing.com/th/id/R.a30c8d6dec7df7fa047594818be9d2a5?rik=5oIQiFwTuv%2fZ%2fA&riu=http%3a%2f%2fimg.pptjia.com%2fimage%2f20190420%2f687cdfabc15fc99e47d55dab5689b17a.jpg&ehk=8Q1UvR6unS%2bksRehbki%2bbYCQ4fLONqXNLdimKlzg7Ys%3d&risl=&pid=ImgRaw&r=0');
+
 }
 
 .container {
   margin: 0;
-  padding-top: 10vh;
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -25,7 +26,6 @@
 
 .logo {
   height: 6em;
-  padding: 1.5em;
   will-change: filter;
   transition: 0.75s;
 }
