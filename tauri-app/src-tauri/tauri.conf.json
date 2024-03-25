@@ -27,8 +27,7 @@
       {
         "title": "tauri-app",
         "label": "main",
-        "fullscreen":true,
-        "url":"https://rtc.classtalkedu.com"
+        "fullscreen":true
       }
     ],
     "security": {

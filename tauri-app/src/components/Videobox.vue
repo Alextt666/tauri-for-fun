@@ -69,9 +69,9 @@ onMounted(async () => {
   const OBS = OBSdefault(deviceList);
   const streamRes = await getLocalMedia(OBS);
   videobox.value.srcObject = streamRes;
-  if (isTauri()) {
-    createSecWindow();
-  }
+//   if (isTauri()) {
+//     createSecWindow();
+//   }
 });
 </script>
 <style></style>
