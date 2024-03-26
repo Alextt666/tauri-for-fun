@@ -1,5 +1,6 @@
 <script setup>
 import { ref, onMounted } from "vue";
+import { ElButton } from 'element-plus'
 const videobox = ref();
 const deviceList = ref([]);
 const handleOptions = async (e) => {
@@ -49,6 +50,7 @@ onMounted(async () => {
         <option :value="item.deviceId">{{ item.label }}</option>
       </template>
     </select>
+ 
   </div>
 </template>
 
