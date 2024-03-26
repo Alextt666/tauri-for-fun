@@ -1,5 +1,5 @@
-import { useCounter } from "./counter.js";
+import { useCameraStore } from "./counter.js";
 
 export {
-  useCounter,
+  useCameraStore,
 };

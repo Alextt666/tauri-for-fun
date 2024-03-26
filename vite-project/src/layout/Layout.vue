@@ -1,11 +1,8 @@
 <template>
   <Navbar/>
-  <CheckLoad />
+  <LocalVideo/>
 </template>
 <script  setup>
-import CheckLoad from "@/components/CheckLoad.vue";
-import Navbar from "@/components/Navbar.vue";
+import Navbar from "@/layout/Navbar.vue";
+import LocalVideo from '@/layout/LocalVideo.vue'
 </script>
-<style>
- 
-</style>
