@@ -1,6 +1,5 @@
 <script setup>
 import { ref, onMounted } from "vue";
-import { ElButton } from 'element-plus'
 const videobox = ref();
 const deviceList = ref([]);
 const handleOptions = async (e) => {
