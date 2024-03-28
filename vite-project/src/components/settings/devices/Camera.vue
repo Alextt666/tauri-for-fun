@@ -13,7 +13,7 @@
       />
     </el-select>
     <div>
-      <video ref="settingVideo" width="400" controls autoplay></video>
+      <video ref="settingVideo" width="400" autoplay></video>
     </div>
   </div>
 </template>
@@ -28,11 +28,12 @@ const currentDevice = ref("default");
 const handleSelectChange = async (e) => {
   const stream = await getLocalStream(e);
   settingVideo.value.srcObject = stream;
+  cameraStore.updateCurrentStream(stream);
+  cameraStore.updateCurrentDevice(e);
 };
 onMounted(() => {
   settingVideo.value.srcObject = cameraStore.currentStream;
   deviceList.value = cameraStore.cameraList;
-  console.log(deviceList.value);
 });
 </script>
 <style></style>
