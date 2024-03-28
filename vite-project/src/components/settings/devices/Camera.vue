@@ -18,22 +18,34 @@
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, toRefs, watch } from "vue";
 import { useCameraStore } from "@/store/camera.js";
 import { getLocalStream } from "@/hooks/useCamera.js";
+const props = defineProps(["confirm"]);
 const cameraStore = useCameraStore();
+const { updateTempCamera, updateTempStream } = cameraStore;
+const { currentStream, cameraList, currentCamera } = toRefs(cameraStore);
 const settingVideo = ref(null);
 const deviceList = ref([]);
 const currentDevice = ref("default");
 const handleSelectChange = async (e) => {
   const stream = await getLocalStream(e);
+  setStream(stream);
+  updateTempStream(stream);
+  updateTempCamera(e);
+};
+const setStream = (stream) => {
   settingVideo.value.srcObject = stream;
-  cameraStore.updateCurrentStream(stream);
-  cameraStore.updateCurrentDevice(e);
 };
 onMounted(() => {
-  settingVideo.value.srcObject = cameraStore.currentStream;
-  deviceList.value = cameraStore.cameraList;
+  setStream(currentStream.value);
+  deviceList.value = cameraList.value;
 });
+watch(
+  () => props.confirm,
+  () => {
+    setStream(currentStream.value);
+    currentDevice.value = currentCamera.value;
+  }
+);
 </script>
-<style></style>
