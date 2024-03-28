@@ -1,8 +1,8 @@
 <template>
-  <Navbar/>
-  <LocalVideo/>
+  <Navbar />
+  <Videos />
 </template>
-<script  setup>
+<script setup>
 import Navbar from "@/layout/Navbar.vue";
-import LocalVideo from '@/layout/LocalVideo.vue'
+import Videos from "@/layout/Videos.vue";
 </script>

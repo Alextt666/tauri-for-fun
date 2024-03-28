@@ -13,26 +13,39 @@
       />
     </el-select>
     <div>
-      <video ref="settingVideo" width="400" controls autoplay></video>
+      <video ref="settingVideo" width="400" autoplay></video>
     </div>
   </div>
 </template>
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, onMounted, toRefs, watch } from "vue";
 import { useCameraStore } from "@/store/camera.js";
 import { getLocalStream } from "@/hooks/useCamera.js";
+const props = defineProps(["confirm"]);
 const cameraStore = useCameraStore();
+const { updateTempCamera, updateTempStream } = cameraStore;
+const { currentStream, cameraList, currentCamera } = toRefs(cameraStore);
 const settingVideo = ref(null);
 const deviceList = ref([]);
 const currentDevice = ref("default");
 const handleSelectChange = async (e) => {
   const stream = await getLocalStream(e);
+  setStream(stream);
+  updateTempStream(stream);
+  updateTempCamera(e);
+};
+const setStream = (stream) => {
   settingVideo.value.srcObject = stream;
 };
 onMounted(() => {
-  settingVideo.value.srcObject = cameraStore.currentStream;
-  deviceList.value = cameraStore.cameraList;
-  console.log(deviceList.value);
+  setStream(currentStream.value);
+  deviceList.value = cameraList.value;
 });
+watch(
+  () => props.confirm,
+  () => {
+    setStream(currentStream.value);
+    currentDevice.value = currentCamera.value;
+  }
+);
 </script>
-<style></style>

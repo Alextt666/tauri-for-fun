@@ -1,3 +1,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+:root {
+  background-image: url("https://th.bing.com/th/id/R.3ed544bc72fa2b049cadc246c171770d?rik=lnCfcwtQF9mgBg&riu=http%3a%2f%2fimg.pptjia.com%2fimage%2f20190420%2f085e1b8ae6cf1e0326b957764f6d9665.jpg&ehk=odBxEsNiLSTFxCypCu0yhbisOyAvT2kOLszQoa245rk%3d&risl=&pid=ImgRaw&r=0");
+}
