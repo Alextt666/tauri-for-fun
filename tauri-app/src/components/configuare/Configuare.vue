@@ -22,15 +22,22 @@ import { ref } from "vue";
 import { invoke } from "@tauri-apps/api/tauri";
 const configVisible = ref(false);
 const netOption = ref("local");
+const validOptions = () => {
+  if (netOption.value === "local") {
+    invoke("set_net_config", { netConfig: "localhost:2024" });
+    console.log("create local wss server & handle local peer create");
+  } else {
+    console.log("handle remote peer create");
+  }
+};
 const handleConfiguare = () => {
   configVisible.value = true;
 };
 const handleCancel = () => {
   configVisible.value = false;
-  console.log(import.meta.url)
 };
 const handleConfirm = () => {
   configVisible.value = false;
-  invoke("set_net_config", { netConfig: "localhost:2024" });
+  validOptions();
 };
 </script>
