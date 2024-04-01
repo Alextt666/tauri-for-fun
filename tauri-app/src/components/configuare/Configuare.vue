@@ -19,6 +19,7 @@
 </template>
 <script setup>
 import { ref } from "vue";
+import { invoke } from "@tauri-apps/api/tauri";
 const configVisible = ref(false);
 const netOption = ref("local");
 const handleConfiguare = () => {
@@ -26,8 +27,10 @@ const handleConfiguare = () => {
 };
 const handleCancel = () => {
   configVisible.value = false;
+  console.log(import.meta.url)
 };
 const handleConfirm = () => {
   configVisible.value = false;
+  invoke("set_net_config", { netConfig: "localhost:2024" });
 };
 </script>

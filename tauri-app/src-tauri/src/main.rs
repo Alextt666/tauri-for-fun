@@ -11,9 +11,14 @@ fn increse(num: i32) -> i32 {
     num + 1
 }
 
+#[tauri::command]
+fn set_net_config(net_config: String) {
+    println!("I was invoked from JS! The argument is {}", net_config);
+}
+
 fn main() {
     tauri::Builder::default()
-        .invoke_handler(tauri::generate_handler![greet, increse])
+        .invoke_handler(tauri::generate_handler![greet, increse,set_net_config])
         .run(tauri::generate_context!())
         .expect("error while running tauri application");
 }
